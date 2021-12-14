@@ -1,0 +1,89 @@
+.header{
+    width: 100%;
+    height: 70px;
+    background-color: #282828;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.wrapper{
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img{
+    width: 60px;
+    height: 60px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+}
+.nav > ul{
+    display: flex;
+    position: relative;
+}
+
+.courses i{
+    padding: 0 5px;
+}
+.nav ul li{
+    list-style: none;
+    padding: 10px;
+    width: 200px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+.nav > ul > li > ul {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #711586;
+    top: 60px;
+    left: -20px;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 30;
+
+}
+/*.nav > ul > li > ul > span{*/
+/*     width: 40px;*/
+/*     height: 40px;*/
+/*    display: block;*/
+/*     background-color: red;*/
+/*    transform: rotate(45deg);*/
+/*     position: absolute;*/
+/*    z-index: 1;*/
+
+/*}*/
+
+.nav >ul >li>ul>li{
+    width: 100%;
+    color: black;
+    padding: 10px 20px;
+    text-align: start;
+
+}
+.nav >ul >li>ul>li:hover{
+     background-color: greenyellow;
+}
+
+
+
+.nav > ul > li:hover{
+    background-color: rgba(146, 51, 255, 0.72);
+    transition: 0.2s all;
+    cursor: pointer;
+    padding: 10px;
+}
