@@ -1,19 +1,23 @@
 import React from 'react'
 import header from './header.module.css'
-
-
+import english_logo from './icons/english_logo.png'
+import {Link} from 'react-router-dom'
 function Header(){
 
     const [showCourses, setShowCourses] = React.useState(false)
-
+    function onScrollEvent(e){
+        console.log(e)
+    }
 
     return(
-        <div className={header.header}>
+        <div onScroll={(e) => onScrollEvent(e)}  className={header.header}>
                 <div className="container">
                     <div className={header.wrapper}>
-                        <div className={header.logo}>
-                            <img src="https://seeklogo.com/images/E/english-online-london-logo-058432B891-seeklogo.com.png" alt=""/>
-                        </div>
+                        <Link to={'/'}>
+                            <div className={header.logo}>
+                                <img src={english_logo} alt=""/>
+                            </div>
+                        </Link>
 
 
                         <nav className={header.nav} >
@@ -39,7 +43,7 @@ function Header(){
                         </nav>
                     </div>
                 </div>
-
+            
         </div>
     )
 }
