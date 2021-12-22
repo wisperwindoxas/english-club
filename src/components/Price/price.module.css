@@ -1,0 +1,117 @@
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    background:url(./icons/thank\ you.png) repeat-x ;
+    background-position: 20% 10px;
+    background-size: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.price_container{
+    width: 100%;
+    height: 600px;
+    padding: 20px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+.price_block{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 320px;
+    height: 500px;
+    background:linear-gradient(to bottom, rgb(12, 173, 223), rgb(234, 6, 255));
+    border-radius: 20px;
+    color: #fff;
+    margin: 50px auto;
+    cursor: pointer;
+    transition: 0.3s ease;
+    
+}
+.price_block:hover{
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+}
+
+.price_photo{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(to right, rgb(12, 173, 223), rgb(234, 6, 255));
+}
+
+.price_photo img{
+    width: 50%;
+    height: 50%;
+}
+
+
+.price_block h3{
+    font-size: 35px;
+}
+
+.price_block p {
+    font-size: 50px;
+}
+
+.price_block > ul > li {
+    list-style: none;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.price_block > ul > li > img {
+    width: 15px;
+    margin-right: 10px;
+}
+
+.price_block button{
+    width: 150px;
+    padding: 10px;
+    font-size: 18px;
+    color: #000;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+.footer{
+    width: 100%;
+    height: 200px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 100;
+    background:url(./icons/sweet.png) repeat-x;
+    background-size: contain;
+}
+
+.price_block:nth-of-type(2){
+    height: 580px;
+    background:linear-gradient(to bottom, rgb(233, 7, 253), rgb(255, 251, 6));
+}
+.price_block:nth-of-type(2) .price_photo{
+    background:linear-gradient(to right, rgb(233, 7, 253), rgb(255, 251, 6));
+}
+.price_block:nth-of-type(3){
+    background:linear-gradient(to bottom, rgb(7, 64, 253), rgb(6, 255, 89));
+}
+.price_block:nth-of-type(3) .price_photo{
+    background:linear-gradient(to right, rgb(7, 64, 253), rgb(6, 255, 89));
+}

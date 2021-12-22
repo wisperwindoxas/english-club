@@ -13,7 +13,7 @@
 .left{
     width: 25%;
     height: 100%;
-    background:url('./icons/monkey.png') no-repeat  #6713e3 ;
+    background:url('./icons/monkey.png') no-repeat ,  linear-gradient(to bottom, #6713e3, rgb(21, 150, 161)) ;
     background-size: 50%;
     /*border-radius: 0 0 0% 50%;*/
     background-position: 10% center;
@@ -25,7 +25,7 @@
     flex-direction: column;
     flex: 1;
 
-    background:url('./icons/welcome.png') no-repeat  #6713e3  ;
+    background:url('./icons/welcome.png') no-repeat ,linear-gradient(to bottom, #6713e3, rgb(21, 150, 161))  ;
     background-position: 00% top;
     background-size: 20%;
     overflow: hidden;
@@ -44,10 +44,10 @@
 .right{
     width: 25%;
     height: 100%;
-    background: url('./icons/student.png') no-repeat #6713e3;
+    background: url('./icons/student.png') no-repeat, linear-gradient(to bottom, #6713e3, rgb(21, 150, 161));
     /*border-radius: 0 0 80% 0;*/
     background-size: 40%;
-    background-position: 90% 50%;
+    background-position: 90% 20%;
 }
 
 
@@ -67,6 +67,7 @@
     transform: translateY(-1200px);
     position: absolute;
     color: #fff;
+    box-sizing: border-box;
 
 
     
@@ -81,6 +82,8 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
+    left: 0;
+    top: 0;
     z-index: 150;
     display: flex;
     justify-content: center;
@@ -88,6 +91,8 @@
     background-color: rgba(0, 0, 0, 0.363);
     transition: 0.3s linear;
     transform: translateY(0px);
+    box-sizing: border-box;
+    
   
 }
 
@@ -105,6 +110,7 @@
     align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
+
     
     
 }

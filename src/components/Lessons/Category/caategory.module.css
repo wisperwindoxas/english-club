@@ -62,7 +62,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #fff;
+    background:linear-gradient(to bottom, #6713e3, rgb(21, 150, 161)) ;
     overflow: hidden;
 
 

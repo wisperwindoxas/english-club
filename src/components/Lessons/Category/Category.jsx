@@ -16,7 +16,7 @@ function  Category ({number}) {
            <div
 
                className={category.categoryBlocks }
-               style={showComponent ? {background:"#6713e3", color:"#fff"} : {}}
+               style={showComponent ? {background:"linear-gradient(to bottom, #6713e3, rgb(21, 150, 161))", color:"#fff"} : {}}
            >
                 <div onClick={() => setShowComponent(!showComponent)}  className={category.wrapper}>
                     <img src="https://lim-english.com/uploads/images/issues/65.png" alt=""/>

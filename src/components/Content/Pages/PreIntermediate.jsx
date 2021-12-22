@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 
 function  PreIntermediate () {
     return(
-        <div className={pagesStyle.start}>
+        <div  className={pagesStyle.start}>
             <h1>Pre-intermediate</h1>
             <div className={pagesStyle.cards}>
                 <Link to={'pre-intermediate'}>
