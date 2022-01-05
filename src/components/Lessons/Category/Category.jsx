@@ -32,7 +32,7 @@ function  Category ({number}) {
                >
                    {arrComp.map((item, index) => {
                        return (
-                           <Component learn={"Darslik"} name_learn={`0${index+1}: darslik`}/>
+                           <Component key={index} learn={"Darslik"} name_learn={`0${index+1}: darslik`}/>
                        )
                    })}
                </div>

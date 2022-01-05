@@ -1,0 +1,35 @@
+.videoContent{
+    margin-top: 100px;
+    border: 1px solid red;
+    padding: 20px;
+}
+
+.videoPlayer{
+    width: 700px;
+    height: 400px;
+
+    margin: 50px auto;
+}
+
+.videoPlayer video{
+    width: 100%;
+    height: 100%;
+}
+
+.title{
+    width: 700px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(173, 173, 173);
+}
+
+.active{
+    color: #000;
+}
