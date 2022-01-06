@@ -4,7 +4,59 @@ import Header from '../../Header/Header'
 import videoStyle from './style.module.css'
 export default function AudioLessons() {
 
-    const [isPlayVideoContent, setIsPlayVideoContent] = React.useState(false)
+    const [words, setWords] = React.useState([])
+    const [text, setText] = React.useState([])
+    let line_word = []
+
+    React.useEffect(() => {
+        let word = 'I love you my baby';
+        setWords(word.split(' '))
+    },[])
+    function shuffle(array) {
+        let currentIndex = array.length 
+        let temporaryValue;
+        let randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+      
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+      
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+      
+        
+      }
+    
+    
+    let arr = [];
+    
+React.useEffect(() =>{
+    for (let i = 0; i < words.length; i++){
+        arr.push(i);
+        shuffle(arr);
+    }
+})
+
+
+
+
+function getWords (e){
+    line_word.push(e)
+  
+
+}
+
+
+
+
+
+
     return (
         <>
             <Header />
@@ -28,29 +80,18 @@ export default function AudioLessons() {
                     
                        </Link>
                     </div>
-                    <div className={videoStyle.videoPlayer}>
-                        {
-
-                            isPlayVideoContent ?
-                                <video
-                                    poster='https://lim-english.com/uploads/images/all/video/videoscreen_ver4.png'
-                                    src={'https://lim-english.com/uploads/images/all/video/319.mp4'}
-                                    controls
-                                >
-
-                                </video> :
-                                <video
-                                    poster='https://lim-english.com/uploads/images/all/video/videoscreen_ver4.png'
-                                    src={'https://lim-english.com/uploads/images/all/video/319.mp4'}
-                                    onClick={() => setIsPlayVideoContent(true)}
-                                >
-
-                                </video>
-
-                        }
+                    <div className={videoStyle.audioBlock}>
+                        <h3>I love you  my baby</h3>
+                        <input type='text' placeholder='write word' className={videoStyle.wordText}/>
+                        <div className={videoStyle.word}>
+                             {words.map(item =>{
+                                 return <span onClick={(e) => getWords(item)} key={item}>{item}</span>
+                             })}
+                        </div>
                     </div>
+                    
                     <div className={videoStyle.button}>
-                        <Link to={'/audioLesson'}>
+                        <Link to={'/imageLesson'}>
                             <button>Next</button>
                         </Link>
                     </div>

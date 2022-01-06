@@ -51,8 +51,8 @@ export default function RobotLessons() {
                         }
                     </div>
                     <div className={videoStyle.button}>
-                        <Link to={'/audioLesson'}>
-                            <button>Next</button>
+                        <Link to={'/videoLesson'}>
+                            <button>End</button>
                         </Link>
                     </div>
                 </div>

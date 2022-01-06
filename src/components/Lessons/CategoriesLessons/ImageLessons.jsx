@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Header from '../../Header/Header';
 import videoStyle from './style.module.css'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 export default function ImageLessons() {
     const questions = [
         {
-            questionImg: 'https://cdn3.iconfinder.com/data/icons/back-to-school-6/512/APPLE.png',
+            questionImg: 'https://i.pinimg.com/originals/b4/bf/f9/b4bff991869ae63db90f2377eab29559.png',
             answerOptions: [
                 { answerText: 'apple', isCorrect: true },
                 { answerText: 'melon', isCorrect: false },
@@ -23,7 +23,7 @@ export default function ImageLessons() {
             ],
         },
         {
-            questionImg: 'https://img2.freepng.ru/20180910/gtk/kisspng-clip-art-transportation-bicycle-portable-network-red-flat-icon-ride-cartoon-bikes-cycle-bike-5b96cb0b273938.4580382815366090351607.jpg',
+            questionImg: 'https://www.pngkey.com/png/full/79-797848_colorful-clipart-bicycle-ride-a-bicycle-cartoon.png',
             answerOptions: [
                 { answerText: 'motorcycle ', isCorrect: false },
                 { answerText: 'car', isCorrect: false },
@@ -64,26 +64,26 @@ export default function ImageLessons() {
 
     return (
         <>
-            <Header />
+        <Header/>
             <div className='container' >
                 <div className={videoStyle.videoContent}>
-                    <div className={videoStyle.title}>
-                        <Link to={'/videoLesson'}>
-                            {false ? <h2 className={videoStyle.active}>Video</h2> : <h2>Video</h2>}
+                <div className={videoStyle.title}>
+                        <Link  to={'/videoLesson'}>
+                            {false ? <h2 className={videoStyle.active}>Video</h2> :   <h2>Video</h2>}
                         </Link>
                         <Link to={'/audioLesson'}>
                             {false ? <h2 className={videoStyle.active}>Audio</h2> : <h2>Audio</h2>}
-
+                        
                         </Link>
                         <Link to={'/imageLesson'}>
-                            {true ? <h2 className={videoStyle.active}>Image</h2> : <h2>Image</h2>}
-
+                        {true ? <h2 className={videoStyle.active}>Image</h2> :   <h2>Image</h2>}
+                          
                         </Link>
-                        <Link to={'/robotLesson'}>
-                            {false ? <h2 className={videoStyle.active}>Robot</h2> : <h2>Robot</h2>}
-
-                        </Link>
-
+                       <Link to={'/robotLesson'}>
+                       {false ? <h2 className={videoStyle.active}>Robot</h2> :   <h2>Robot</h2>}
+                    
+                       </Link>
+                       
                     </div>
                     <div className='app'>
                         {showScore ? (
@@ -95,20 +95,30 @@ export default function ImageLessons() {
                         ) : (
                             <>
                                 <div className='question-section'>
-                                   
+                                    <div className='question-count'>
+                                        <span>Question {currentQuestion + 1}</span>/{questions.length}
+                                    </div>
                                     <div className='question-img'>
                                         <img src={questions[currentQuestion].questionImg} alt="img" />
                                     </div>
                                 </div>
                                 <div className='answer-section'>
+                                <div className="btns">
                                     {questions[currentQuestion].answerOptions.map((answerOption) => (
-                                        <button className='answerBtn' key={answerOption.answerText} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-                                    ))}
+                                            <button className='answerBtn' key={answerOption.answerText} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+                                         ))}
+                                    </div>
                                 </div>
                             </>
                         )}
                     </div>
+                    <div className={videoStyle.button}>
+                        <Link to={'/robotLesson'}>
+                            <button>Next</button>
+                        </Link>
+                    </div>
                 </div>
+
             </div>
         </>
     );
