@@ -9,7 +9,7 @@ function BegCategory({text}){
             <h1 style={{textAlign:"left", padding:"20px", marginTop:"80px"}}>{text}</h1>
             {categoryNum.map((item, index) =>{
                 return (
-                    <Category number={index+1}/>
+                    <Category key={item} number={index+1}/>
                 )
             })}
         </div>

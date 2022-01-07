@@ -76,6 +76,7 @@ a{
 
 .wordText{
     width: 100%;
+    height: 50px;
     font-weight: bold;
     border: none;
     background-color: rgba(119, 81, 255, 0.651);
@@ -84,6 +85,21 @@ a{
     margin: 30px auto;
     color: #fff;
 
+}
+.wordText span{
+    width: 50px;
+  
+
+    
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
 }
 
 .wordText::placeholder{
@@ -94,6 +110,11 @@ a{
     padding: 10px;
     font-size: 20px;
     font-weight: 600;
+}
+
+.full{
+    color: rgb(5, 255, 5);
+    font-weight: bold;
 }
 
 .word span{
@@ -108,4 +129,5 @@ a{
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    cursor: pointer;
 }

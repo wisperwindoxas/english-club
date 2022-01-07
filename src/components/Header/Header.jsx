@@ -32,7 +32,7 @@ function Header(){
 
                         <nav className={header.nav} >
                             <ul>
-                                <Link to="#">
+                                <Link to="/menu">
                                 <li
                                     onMouseEnter={()=> setShowCourses(true) }
 
