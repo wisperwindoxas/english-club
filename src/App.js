@@ -28,7 +28,7 @@ function App() {
             <Route path={"/about"} element={<About/>} exact={true} />
             <Route path={"/contact"} element={<Contact/>} exact={true} />
             <Route path={"/videoLesson"} element={<VidoeLessons/>} exact={true} />
-            <Route path={'/audioLesson'} element={<AudioLessons/>} excat/>
+            <Route path={'/audioLesson'} element={<AudioLessons />} excat/>
             <Route path={'/imageLesson'} element={<ImageLessons/>} excat/>
             <Route path={'/robotLesson'} element={<RobotLessons/>} excat/>
         </Routes>
