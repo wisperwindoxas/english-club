@@ -3,6 +3,10 @@ import Header from '../../Header/Header';
 import videoStyle from './style.module.css'
 import {Link} from 'react-router-dom'
 export default function ImageLessons() {
+
+    const [endTest, setEndTest] = React.useState(false)
+
+
     const questions = [
         {
             questionImg: 'https://i.pinimg.com/originals/b4/bf/f9/b4bff991869ae63db90f2377eab29559.png',
@@ -46,6 +50,8 @@ export default function ImageLessons() {
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
 
+    
+
     const handleAnswerOptionClick = (isCorrect) => {
         if (isCorrect) {
             setScore(score + 1);
@@ -57,6 +63,7 @@ export default function ImageLessons() {
             setCurrentQuestion(nextQuestion);
         } else {
             setShowScore(true);
+            setEndTest(true)
         }
     };
 
@@ -112,7 +119,7 @@ export default function ImageLessons() {
                             </>
                         )}
                     </div>
-                    <div className={videoStyle.button}>
+                    <div className={endTest ? videoStyle.buttonActive :videoStyle.button}>
                         <Link to={'/robotLesson'}>
                             <button>Next</button>
                         </Link>

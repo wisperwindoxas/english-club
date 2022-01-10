@@ -5,20 +5,54 @@ import Header from '../../Header/Header'
 import Error from './error.mp3'
 
 import videoStyle from './style.module.css'
-export default function AudioLessons({name}) {
 
-    let checkedWord = React.useRef('')
+
+const questions = [
+    {
+        questionText: 'I love you my baby',
+
+    },
+    {
+        questionText: 'You need more info',
+        
+    },
+    {
+        questionText: 'This my friend',
+       
+    },
+    {
+        questionText: 'My hobbies play computer games',
+        
+    }
+];
+
+export default function AudioLessons() {
+
+
+
     let playEror = React.useRef('')
     const [words, setWords] = React.useState([])
     const [text, setText] = React.useState([])
+    const [endTest, setEndTest] = React.useState(false)
+    const [currentQuestion, setCurrentQuestion] = React.useState(0);
+    const [showScore, setShowScore] = React.useState(false);
+    const [score, setScore] = React.useState(0);
 
-    React.useEffect(() => {
-        let word = 'I love you my baby';
-        setWords(word.split(' '))
-    }, [])
+    let word = questions[currentQuestion].questionText
 
+    React.useEffect(() =>{
 
-
+            setWords(word.split(' '))
+  
+        
+        const nextQuestion = currentQuestion
+        
+        if (nextQuestion >= questions.length) {
+            setShowScore(true);
+            setEndTest(true)
+        }
+        // eslint-disable-next-line
+    },[word, text])
 
     function shuffle(array) {
         let currentIndex = array.length
@@ -40,73 +74,65 @@ export default function AudioLessons({name}) {
 
 
     }
-        if(text.length >= words.length){
-            if(words.join(' ') === text.join(' ')){
-               
-            }
-           
-        }
+
+
+
 
     let arr = [];
 
     React.useEffect(() => {
-        
-      function getRandomNumber(){
-        for (let i = 0; i < words.length; i++) {
-            arr.push(i);
-            shuffle(arr);
-            
+
+        function getRandomNumber() {
+            for (let i = 0; i < words.length; i++) {
+                arr.push(i);
+                shuffle(arr);
+
+            }
         }
-      }
-      return getRandomNumber
+        return getRandomNumber
         // eslint-disable-next-line
-    }, [arr])
+    },[])
 
 
-    function getChangeWords (e){
-        console.log(e);
-    }
-   
 
-    function getWordsItem (e) {
-        e.target.style.display = 'none'
+    function getWordsItem(e) {
         
+
     }
 
-    function checkText(e){
-        if(e.target.innerText === words.join(' ') || e.target.innerText === words.join('')){
-            e.target.style.color = 'green'
-        }else{
-         e.target.style.color = 'white'
+
+    function checkText(e) {
+        if (e.target.innerText === words.join(' ')) {
+            setCurrentQuestion(currentQuestion + 1)
+            e.target.innerText = " "
+            
+
+        } else {
+            e.target.style.color = 'white'
         }
-        
-        ;
-     }
+
+
+
+    }
 
     function setWordsItem(items, e) {
         setText([...text, items])
         e.target.style.pointerEvents = 'none'
         e.target.style.opacity = '0.5'
-
-        let searchIndex = words.findIndex(i => i === items)
-        console.log(searchIndex);
-        if(items !== words[searchIndex]){
-            console.log('errror');
+        if (words.join(' ') === text.join(' ')) {
+            setScore(score + 1);
+           
         }
-        
-  
+
     }
-
-
-
 
     return (
         <>
             <Header />
             <div className='container'>
-                <audio ref={playEror} src={Error}/>
+                <audio ref={playEror} src={Error} />
                 <div className={videoStyle.videoContent}>
-            {/* Title component top */}
+                    {/* Title component top */}
                     <div className={videoStyle.title}>
                         <Link to={'/videoLesson'}>
                             {false ? <h2 className={videoStyle.active}>Video</h2> : <h2>Video</h2>}
@@ -124,40 +150,66 @@ export default function AudioLessons({name}) {
 
                         </Link>
                     </div>
-            {/* Title component top end */}
-                    <div className={videoStyle.audioBlock}>
-                        <h3>I love you  my baby</h3>
-                        <div 
-                        ref={checkedWord}
-                        onInput={(e) => checkText(e)}
-                        suppressContentEditableWarning
-                        contentEditable
-                        spellCheck={false} 
-                        className={videoStyle.wordText}>
+                    {/* Title component top end */}
 
-                            {text.map(item => {
-                                return <span 
-                                onClick={(e) => {
-                                    getWordsItem(e)
-                                    // getChangeWords(e)
-                                }}
-                                 key={item}>{item}
-                                 </span>
-                            })}
-                        </div>
-                        <div className={videoStyle.word}>
-                        {name}
-                            {words.map(item => {
-                                return <span 
-                                onChange={(e) => getChangeWords(e)}
-                                onClick={(e) => setWordsItem(item, e)} 
-                                key={item}>{item}
-                                </span>
-                            })}
-                        </div>
+                    <div className={videoStyle.audioBlock}>
+                        <h3>{questions[currentQuestion].questionText}</h3>
+                        {showScore ? (
+                            <div className='score-section'>
+                                You scored {score} out of {questions.length}
+
+                            </div>
+
+                        ) : (
+                            <>
+                                <div className='question-section'>
+                                    <div className='question-count'>
+                                        <span>Question {currentQuestion + 1}</span>/{questions.length}
+                                    </div>
+                                    <div
+                                        onInput={(e) => checkText(e)}
+                                        suppressContentEditableWarning
+                                        contentEditable
+
+                                        spellCheck={false}
+                                        className={videoStyle.wordText}>
+
+                                        {text.map(item => {
+                                            return <span
+                                                onClick={(e) => {
+                                                    getWordsItem(e)
+
+                                                }}
+
+                                                key={item}>{item}
+                                            </span>
+                                        })}
+                                    </div>
+                                </div>
+                                <div className='answer-section'>
+                                    <div className={videoStyle.word}>
+
+                                        {words.map(item => {
+                                            return <span
+                                                onClick={(e) => {
+                                                    setWordsItem(item, e)
+                                                }}
+                                                onInput={(event) => getWordsItem(event)}
+                                                key={item}>{item}
+                                            </span>
+                                        })}
+                                    </div>
+                                </div>
+                            </>
+                        )}
+
+
+
+
+
                     </div>
 
-                    <div className={videoStyle.button}>
+                    <div className={endTest ? videoStyle.buttonActive : videoStyle.button}>
                         <Link to={'/imageLesson'}>
                             <button>Next</button>
                         </Link>
@@ -167,3 +219,6 @@ export default function AudioLessons({name}) {
         </>
     )
 }
+
+
+

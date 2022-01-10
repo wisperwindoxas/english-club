@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import Header from '../../Header/Header'
 import videoStyle from './style.module.css'
 export default function VidoeLessons() {
- 
+
+    const durationVideo = React.useRef('')
     const [isPlayVideoContent, setIsPlayVideoContent] = React.useState(false)
+    const [isPlayDuration, setIsPlayDuration] = React.useState(false)
+
+    
 
     return (
-
-
 
         <>
             <Header />
@@ -33,24 +35,26 @@ export default function VidoeLessons() {
                         {
 
                             isPlayVideoContent ?
-                                <video
+                                <video ref={durationVideo}
                                     poster='https://lim-english.com/uploads/images/all/video/videoscreen_ver4.png'
                                     src={'https://lim-english.com/uploads/images/all/video/319.mp4'}
                                     controls
+                                    onEnded={() => setIsPlayDuration(true)}
                                 >
 
                                 </video> :
-                                <video
+                                <video ref={durationVideo}
                                     poster='https://lim-english.com/uploads/images/all/video/videoscreen_ver4.png'
                                     src={'https://lim-english.com/uploads/images/all/video/319.mp4'}
                                     onClick={() => setIsPlayVideoContent(true)}
+                                    onEnded={() => setIsPlayDuration(true)}
                                 >
 
                                 </video>
 
                         }
                     </div>
-                    <div className={videoStyle.button}>
+                    <div className={isPlayDuration ? videoStyle.buttonActive : videoStyle.button}>
                         <Link to={'/audioLesson'}>
                             <button className={videoStyle.btn}>Next</button>
                         </Link>

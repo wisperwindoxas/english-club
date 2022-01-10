@@ -1,11 +1,21 @@
 import React from 'react'
+import SpeechRecognition, {useSpeechRecognition } from 'react-speech-recognition';
 import { Link } from 'react-router-dom'
 import Header from '../../Header/Header'
 import videoStyle from './style.module.css'
 
 export default function RobotLessons() {
+    const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition
+      } = useSpeechRecognition();
+    
+      if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>;
+      }
 
-    const [isPlayVideoContent, setIsPlayVideoContent] = React.useState(false)
     return (
         <>
             <Header />
@@ -30,25 +40,13 @@ export default function RobotLessons() {
                         </Link>
                     </div>
                     <div className={videoStyle.videoPlayer}>
-                        {
-
-                            isPlayVideoContent ?
-                                <video
-                                    poster='https://lim-english.com/uploads/images/all/video/videoscreen_ver4.png'
-                                    src={'https://lim-english.com/uploads/images/all/video/319.mp4'}
-                                    controls
-                                >
-
-                                </video> :
-                                <video
-                                    poster='https://lim-english.com/uploads/images/all/video/videoscreen_ver4.png'
-                                    src={'https://lim-english.com/uploads/images/all/video/319.mp4'}
-                                    onClick={() => setIsPlayVideoContent(true)}
-                                >
-
-                                </video>
-
-                        }
+                    <div>
+                            <p>Microphone: {listening ? 'on' : 'off'}</p>
+                            <button onClick={SpeechRecognition.startListening}>Start</button>
+                            <button onClick={SpeechRecognition.stopListening}>Stop</button>
+                            <button onClick={resetTranscript}>Reset</button>
+                            <p>{transcript}</p>
+                            </div>
                     </div>
                     <div className={videoStyle.button}>
                         <Link to={'/videoLesson'}>

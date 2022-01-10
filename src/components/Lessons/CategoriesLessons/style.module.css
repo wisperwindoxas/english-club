@@ -56,9 +56,11 @@ a{
     justify-content: flex-end;
     align-items: center;
     padding: 10px 20px;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
-.button  button{
+.button button, .buttonActive  button{
     width: 200px;
     padding: 10px;
     font-size: 18px;
@@ -109,6 +111,17 @@ a{
     font-weight: 600;
 }
 
+
+.buttonActive{
+    pointer-events: painted;
+    opacity: 1;
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+}
 
 .uncorret{
     color: rgb(255, 255, 255);

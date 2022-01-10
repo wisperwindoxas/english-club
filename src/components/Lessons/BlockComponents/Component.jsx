@@ -24,7 +24,6 @@ function Component ({learn, name_learn}){
                 <p>{name_learn}</p>
                 <Link to="/videoLesson">
                     <button>Boshlomoq <i className="fas fa-long-arrow-alt-right"/></button>
-                   
                 </Link>
                
             </div>
