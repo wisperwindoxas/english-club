@@ -8,7 +8,10 @@ export default function VidoeLessons() {
     const [isPlayVideoContent, setIsPlayVideoContent] = React.useState(false)
     const [isPlayDuration, setIsPlayDuration] = React.useState(false)
 
-    
+    function durationVideoLength (e){
+        console.log(e.target.currentTime);
+       
+    }
 
     return (
 
@@ -39,6 +42,7 @@ export default function VidoeLessons() {
                                     poster='https://lim-english.com/uploads/images/all/video/videoscreen_ver4.png'
                                     src={'https://lim-english.com/uploads/images/all/video/319.mp4'}
                                     controls
+                                    onTimeUpdate={(e) => durationVideoLength(e)}
                                     onEnded={() => setIsPlayDuration(true)}
                                 >
 

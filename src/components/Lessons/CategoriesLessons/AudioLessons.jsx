@@ -41,16 +41,8 @@ export default function AudioLessons() {
     let word = questions[currentQuestion].questionText
 
     React.useEffect(() =>{
-
             setWords(word.split(' '))
-  
-        
-        const nextQuestion = currentQuestion
-        
-        if (nextQuestion >= questions.length) {
-            setShowScore(true);
-            setEndTest(true)
-        }
+
         // eslint-disable-next-line
     },[word, text])
 
@@ -78,35 +70,38 @@ export default function AudioLessons() {
 
 
 
-    let arr = [];
+    let randomNumber = [];
 
-    React.useEffect(() => {
+   
 
-        function getRandomNumber() {
+    React.useMemo(() => {
             for (let i = 0; i < words.length; i++) {
-                arr.push(i);
-                shuffle(arr);
+                randomNumber.push(i);
+                shuffle(randomNumber);
 
             }
-        }
-        return getRandomNumber
         // eslint-disable-next-line
-    },[])
-
+    },[words])
 
 
     function getWordsItem(e) {
-        
+            e.target.style.display = 'none'
 
     }
 
 
     function checkText(e) {
         if (e.target.innerText === words.join(' ')) {
-            setCurrentQuestion(currentQuestion + 1)
             e.target.innerText = " "
-            
+            setScore(score + 1)
 
+            const nextQuestion = currentQuestion + 1
+            if (nextQuestion >= questions.length) {
+                setShowScore(true);
+                setEndTest(true)
+            }else{
+                setCurrentQuestion(nextQuestion)
+            }
         } else {
             e.target.style.color = 'white'
         }
@@ -115,15 +110,14 @@ export default function AudioLessons() {
 
     }
 
+  
+
     function setWordsItem(items, e) {
         setText([...text, items])
         e.target.style.pointerEvents = 'none'
         e.target.style.opacity = '0.5'
-        if (words.join(' ') === text.join(' ')) {
-            setScore(score + 1);
-           
-        }
-
+       
+        
     }
 
     return (
@@ -153,7 +147,7 @@ export default function AudioLessons() {
                     {/* Title component top end */}
 
                     <div className={videoStyle.audioBlock}>
-                        <h3>{questions[currentQuestion].questionText}</h3>
+                        <h3>{endTest ? "": questions[currentQuestion].questionText}</h3>
                         {showScore ? (
                             <div className='score-section'>
                                 You scored {score} out of {questions.length}
@@ -189,13 +183,13 @@ export default function AudioLessons() {
                                 <div className='answer-section'>
                                     <div className={videoStyle.word}>
 
-                                        {words.map(item => {
+                                        {randomNumber.map(item => {
                                             return <span
                                                 onClick={(e) => {
-                                                    setWordsItem(item, e)
+                                                    setWordsItem(words[item], e)
                                                 }}
                                                 onInput={(event) => getWordsItem(event)}
-                                                key={item}>{item}
+                                                key={item}>{words[item]}
                                             </span>
                                         })}
                                     </div>

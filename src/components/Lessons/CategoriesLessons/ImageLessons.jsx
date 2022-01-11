@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Header from '../../Header/Header';
 import videoStyle from './style.module.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 export default function ImageLessons() {
 
     const [endTest, setEndTest] = React.useState(false)
+   
 
 
     const questions = [
@@ -49,14 +50,19 @@ export default function ImageLessons() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
-
+    const [scoreResult, setScoreResult] = useState(0);
+    const numberResult = React.useRef(null)
     
 
+
     const handleAnswerOptionClick = (isCorrect) => {
+        const resultScore = Math.ceil(100 / questions.length)
+        setScoreResult(resultScore)
         if (isCorrect) {
             setScore(score + 1);
+            
         }
-
+       
         const nextQuestion = currentQuestion + 1;
 
         if (nextQuestion < questions.length) {
@@ -64,41 +70,66 @@ export default function ImageLessons() {
         } else {
             setShowScore(true);
             setEndTest(true)
+           
+           
         }
+       
     };
 
+    console.log(numberResult.current.innerText);
 
+    React.useEffect(() => {
+        document.querySelector(':root').style.setProperty(`--counter`, `${471-471 * numberResult.current}`)
+    }, [])
+    
 
     return (
         <>
-        <Header/>
+            <Header />
             <div className='container' >
                 <div className={videoStyle.videoContent}>
-                <div className={videoStyle.title}>
-                        <Link  to={'/videoLesson'}>
-                            {false ? <h2 className={videoStyle.active}>Video</h2> :   <h2>Video</h2>}
+                    <div className={videoStyle.title}>
+                        <Link to={'/videoLesson'}>
+                            {false ? <h2 className={videoStyle.active}>Video</h2> : <h2>Video</h2>}
                         </Link>
                         <Link to={'/audioLesson'}>
                             {false ? <h2 className={videoStyle.active}>Audio</h2> : <h2>Audio</h2>}
-                        
+
                         </Link>
                         <Link to={'/imageLesson'}>
-                        {true ? <h2 className={videoStyle.active}>Image</h2> :   <h2>Image</h2>}
-                          
+                            {true ? <h2 className={videoStyle.active}>Image</h2> : <h2>Image</h2>}
+
                         </Link>
-                       <Link to={'/robotLesson'}>
-                       {false ? <h2 className={videoStyle.active}>Robot</h2> :   <h2>Robot</h2>}
-                    
-                       </Link>
-                       
+                        <Link to={'/robotLesson'}>
+                            {false ? <h2 className={videoStyle.active}>Robot</h2> : <h2>Robot</h2>}
+
+                        </Link>
+
                     </div>
                     <div className='app'>
                         {showScore ? (
-                            <div className='score-section'>
-                                You scored {score} out of {questions.length}
+
+                                <div className="skill">
+                                <div className="outer">
+                                    <div className="inner">
+                                        <div ref={numberResult} id="number">
+                                            {scoreResult * score} %
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                    <defs>
+                                        <linearGradient id="GradientColor">
+                                            <stop offset="0%" stopColor="#e91e63" />
+                                            <stop offset="100%" stopColor="#673ab7" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="80" cy="80" r="70" strokeLinecap="round"  />
+                                </svg>
 
                             </div>
-
                         ) : (
                             <>
                                 <div className='question-section'>
@@ -110,16 +141,16 @@ export default function ImageLessons() {
                                     </div>
                                 </div>
                                 <div className='answer-section'>
-                                <div className="btns">
-                                    {questions[currentQuestion].answerOptions.map((answerOption) => (
+                                    <div className="btns">
+                                        {questions[currentQuestion].answerOptions.map((answerOption) => (
                                             <button className='answerBtn' key={answerOption.answerText} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-                                         ))}
+                                        ))}
                                     </div>
                                 </div>
                             </>
                         )}
                     </div>
-                    <div className={endTest ? videoStyle.buttonActive :videoStyle.button}>
+                    <div className={endTest ? videoStyle.buttonActive : videoStyle.button}>
                         <Link to={'/robotLesson'}>
                             <button>Next</button>
                         </Link>

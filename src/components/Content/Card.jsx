@@ -21,7 +21,7 @@ function  Card ({urlImg, title, subscribe, pageInfo }) {
                <p>{subscribe}</p>
            </div>
 
-                <div style={showCardInfo ? {transform:"translateY(0%)",opacity:"1"} : {transform: "translateY(-110%)"} }
+                <div style={showCardInfo ? {transform:"translateX(0%)",opacity:"1"} : {transform: "translateX(-100%)"} }
                     className={pagesStyle.cardInfo}>
                 <p>{pageInfo}</p>
                 <button>Darsni boshlash</button>
