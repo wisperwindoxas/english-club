@@ -76,12 +76,10 @@ export default function ImageLessons() {
        
     };
 
-    console.log(numberResult.current.innerText);
 
     React.useEffect(() => {
-        document.querySelector(':root').style.setProperty(`--counter`, `${471-471 * numberResult.current}`)
-    }, [])
-    
+        document.querySelector(':root').style.setProperty(`--counter`, `${471-471 * scoreResult * score / 100}`)
+    }, [score, scoreResult])
 
     return (
         <>
@@ -113,7 +111,7 @@ export default function ImageLessons() {
                                 <div className="outer">
                                     <div className="inner">
                                         <div ref={numberResult} id="number">
-                                            {scoreResult * score} %
+                                            {scoreResult * score} 
                                         </div>
                                     </div>
                                 </div>

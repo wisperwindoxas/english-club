@@ -37,6 +37,10 @@ export default function AudioLessons() {
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [showScore, setShowScore] = React.useState(false);
     const [score, setScore] = React.useState(0);
+    const [scoreResult, setScoreResult] = React.useState(0);
+    const numberResult = React.useRef(null)
+
+
 
     let word = questions[currentQuestion].questionText
 
@@ -91,6 +95,10 @@ export default function AudioLessons() {
 
 
     function checkText(e) {
+
+        const resultScore = Math.ceil(100 / questions.length)
+        setScoreResult(resultScore)
+
         if (e.target.innerText === words.join(' ')) {
             e.target.innerText = " "
             setScore(score + 1)
@@ -109,6 +117,11 @@ export default function AudioLessons() {
 
 
     }
+
+
+    React.useEffect(() => {
+        document.querySelector(':root').style.setProperty(`--counter`, `${471-471 * scoreResult * score / 100}`)
+    }, [score, scoreResult])
 
   
 
@@ -149,16 +162,35 @@ export default function AudioLessons() {
                     <div className={videoStyle.audioBlock}>
                         <h3>{endTest ? "": questions[currentQuestion].questionText}</h3>
                         {showScore ? (
-                            <div className='score-section'>
-                                You scored {score} out of {questions.length}
+                             <div className="skill">
+                             <div className="outer">
+                                 <div className="inner">
+                                     <div ref={numberResult} id="number">
+                                         {scoreResult * score} 
+                                     </div>
+                                 </div>
+                             </div>
 
-                            </div>
+
+                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                 <defs>
+                                     <linearGradient id="GradientColor">
+                                         <stop offset="0%" stopColor="#e91e63" />
+                                         <stop offset="100%" stopColor="#673ab7" />
+                                     </linearGradient>
+                                 </defs>
+                                 <circle cx="80" cy="80" r="70" strokeLinecap="round"  />
+                             </svg>
+
+                         </div>
 
                         ) : (
                             <>
                                 <div className='question-section'>
                                     <div className='question-count'>
-                                        <span>Question {currentQuestion + 1}</span>/{questions.length}
+                                        {questions.map((item, index) => {
+                                            return <span className={index === currentQuestion ? 'answer_progressActive': ""}></span>
+                                        })}
                                     </div>
                                     <div
                                         onInput={(e) => checkText(e)}

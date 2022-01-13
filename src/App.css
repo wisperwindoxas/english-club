@@ -47,7 +47,23 @@
 
 .question-count{
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+}
+
+.question-count span{
+  width: 100px;
+  height: 5px;
+  padding: 5px;
+  border: 1px solid rgb(121, 121, 121);
+  display: flex;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 
@@ -82,6 +98,10 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+.answer_progressActive{
+  background-color: rgb(101, 8, 223);
 }
 
 .btns{
@@ -172,14 +192,19 @@
 	color: #555;
 }
 
+#number::after{
+  content: "%";
+  
+}
+
 circle{
 	fill: none;
 	stroke: url(#GradientColor);
 	stroke-width: 20px;
 	stroke-dasharray: 471;
-  stroke-dashoffset:471;
-	animation: anim 2s linear forwards;
-	-webkit-animation: anim 2s linear forwards;
+	stroke-dashoffset:471;
+	animation: anim 1s linear forwards;
+	-webkit-animation: anim 1s linear forwards;
 }
 
 svg{
