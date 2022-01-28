@@ -4,6 +4,7 @@ import pagesStyle from './Pages/pages.module.css'
 
 function  Card ({urlImg, title, subscribe, pageInfo }) {
     const [showCardInfo, setShowCardInfo] = React.useState(false)
+    
 
     return(
         <div

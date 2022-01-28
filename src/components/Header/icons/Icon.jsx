@@ -6,6 +6,8 @@ import Courses from './course.png'
 import Price from './price-label.png'
 import About from './id-card.png'
 import Contact from './customer-service.png'
+import Menu from './menu.svg'
+import Close from './close.svg'
 
 
 export {
@@ -16,5 +18,7 @@ export {
     Courses,
     Price,
     About,
-    Contact
+    Contact,
+    Menu,
+    Close
 }

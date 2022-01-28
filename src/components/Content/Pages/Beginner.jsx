@@ -4,10 +4,14 @@ import Card from "../Card";
 import {Link} from 'react-router-dom'
 
 function  Beginner () {
+
+
+
+
     return(
         <div className={pagesStyle.start}>
                 <h1>Beginner</h1>
-               <div className={pagesStyle.cards}>
+               <div className={pagesStyle.cards} >
                    <Link to={"/beginner"}>
                    <Card
                        urlImg={'https://lim-english.com/uploads/images/courses/18.png'}

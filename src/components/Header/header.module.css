@@ -16,11 +16,12 @@
 
 
 .wrapper{
-    width: 100%;
+    max-width: 100%;
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+   
 }
 
 .logo img{
@@ -29,10 +30,11 @@
 }
 
 .nav {
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    
 
 }
 .nav > ul{
@@ -55,6 +57,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .nav >ul> a > li>img{
     margin-right: 20px;
@@ -110,7 +113,13 @@
 }
 
 
+.gamburger_menu{
+    display: none;
+}
 
+.left_menu{
+    display: none;
+}
 .nav > ul > a > li:hover{
     background-color: rgba(146, 51, 255, 0.72);
     transition: 0.2s all;
@@ -122,4 +131,117 @@
 
 a{
     text-decoration: none;
+}
+
+
+@media (max-width:992px){
+    .container{
+        max-width: 800px;
+       
+    }
+
+    .nav > ul > a > li{
+        list-style: none;
+        max-width: 170px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        padding: 0 !important;
+        
+    }
+}
+
+
+@media (max-width:768px){
+    .nav{
+        display: none;
+    }
+
+    .container{
+        width: 100%;
+    }
+
+    .wrapper{
+        position: absolute;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        left: 0;
+        top: 0;
+    }
+
+    .gamburger_menu{
+        display: block;
+        justify-self: end;
+    }
+
+    .left_menu{
+        width: 70%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #6713e3;
+        margin-top: 80px;
+        box-shadow: 0 0 10px black;
+        border-radius: 10px 0 0 10px;
+        -webkit-border-radius: 10px 0 0 10px;
+        -moz-border-radius: 10px 0 0 10px;
+        -ms-border-radius: 10px 0 0 10px;
+        -o-border-radius: 10px 0 0 10px;
+        display: block;
+}
+
+    .courses_menu_show{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .courses_menu_show p{
+        padding: 0 20px;
+    }
+
+    .left_menu ul{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      
+    }
+
+    .left_menu  ul  li{
+        width: 100%;
+        list-style: none;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+       
+        align-items: center;
+    }
+
+    .left_menu ul a{
+        width: 100%;
+        
+    }
+
+    .left_menu ul a li{
+        display: flex;
+        
+        align-items: center;
+    }
+
+    .left_menu ul a li img{
+        margin-right: 20px;
+    }
+
+    .courses_mobile{
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s linear;
+        -webkit-transition: 0.3s linear;
+        -moz-transition: 0.3s linear;
+        -ms-transition: 0.3s linear;
+        -o-transition: 0.3s linear;
+}
 }

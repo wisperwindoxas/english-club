@@ -19,10 +19,11 @@ function HeaderContent () {
     return(
         <div className={content.content}>
             <div onClick={() =>  onCloseVideo() } className={showVideo ? content.show_video_player: content.video}>
-                <iframe width="50%" height="60%" src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                <div className={content.video_block}>
+                <iframe id="iframe" width="100%" height="100%"  src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen/>
                 </div>
-            <div className={content.left}/>
+                </div>
             <div className={content.center}>
                 <h1>Ingliz tili online o'rganing</h1>
                 <p>Biz bilan Ingliz tilida gapirganigizni sezmay qolasiz</p>
@@ -33,7 +34,7 @@ function HeaderContent () {
                     Qisqacha Darslikini Ko'rish
                     </button>
             </div>
-            <div className={content.right}></div>
+           
         </div>
     )
 }

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import Header from '../../Header/Header';
 import videoStyle from './style.module.css'
 import { Link } from 'react-router-dom'
+
 export default function ImageLessons() {
 
     const [endTest, setEndTest] = React.useState(false)
@@ -131,9 +133,7 @@ export default function ImageLessons() {
                         ) : (
                             <>
                                 <div className='question-section'>
-                                    <div className='question-count'>
-                                        <span>Question {currentQuestion + 1}</span>/{questions.length}
-                                    </div>
+                                    
                                     <div className='question-img'>
                                         <img src={questions[currentQuestion].questionImg} alt="img" />
                                     </div>
