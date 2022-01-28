@@ -40,7 +40,7 @@ export default function AudioLessons() {
     const [scoreResult, setScoreResult] = React.useState(0);
     const numberResult = React.useRef(null)
 
-
+  
 
     let word = questions[currentQuestion].questionText
 
@@ -48,7 +48,7 @@ export default function AudioLessons() {
             setWords(word.split(' '))
 
         // eslint-disable-next-line
-    },[word, text])
+    },[word])
 
     function shuffle(array) {
         let currentIndex = array.length
@@ -71,13 +71,7 @@ export default function AudioLessons() {
 
     }
 
-
-
-
     let randomNumber = [];
-
-   
-
     React.useMemo(() => {
             for (let i = 0; i < words.length; i++) {
                 randomNumber.push(i);
@@ -133,6 +127,8 @@ export default function AudioLessons() {
         
     }
 
+    
+
     return (
         <>
             <Header />
@@ -187,11 +183,7 @@ export default function AudioLessons() {
                         ) : (
                             <>
                                 <div className='question-section'>
-                                    <div className='question-count'>
-                                        {questions.map((item, index) => {
-                                            return <span className={index === currentQuestion ? 'answer_progressActive': ""}></span>
-                                        })}
-                                    </div>
+                                    
                                     <div
                                         onInput={(e) => checkText(e)}
                                         suppressContentEditableWarning
@@ -217,21 +209,17 @@ export default function AudioLessons() {
 
                                         {randomNumber.map(item => {
                                             return <span
-                                                onClick={(e) => {
-                                                    setWordsItem(words[item], e)
-                                                }}
-                                                onInput={(event) => getWordsItem(event)}
-                                                key={item}>{words[item]}
+                                                    onClick={(e) => setWordsItem(words[item], e)}
+                                                    onInput={(event) => getWordsItem(event)}
+                                                    key={item}
+                                                    >
+                                                    {item}
                                             </span>
                                         })}
                                     </div>
                                 </div>
                             </>
                         )}
-
-
-
-
 
                     </div>
 

@@ -6,13 +6,39 @@ import Premium from './icons/shuttle.png'
 import Checked from './icons/check.png'
 import Close from './icons/close.png'
 import Header from '../Header/Header'
+import {useSpring, animated}  from 'react-spring'
 export default function Price() {
+
+    const left = useSpring({
+        from:{y: -1000, opacity:0},
+        to:{y: 0, opacity:1},
+        delay:100,
+       
+        
+    })
+    const center = useSpring({
+        from:{ opacity:0},
+        to:{opacity:1},
+        delay:400,
+      
+        
+    })
+
+
+
+    const right = useSpring({
+        from:{x: 1000, opacity:0},
+        to:{x: 0, opacity:1},
+        delay:100,
+        
+    })
+
     return (
         <div className={price.wrapper}>
             <Header/>
             <div className="container">
                 <div className={price.price_container}>
-                    <div className={price.price_block}>
+                    <animated.div style={left} className={price.price_block}>
                             <div className={price.price_photo}>
                                 <img src={Basic} alt="" />
                             </div>
@@ -36,8 +62,8 @@ export default function Price() {
                                     O'qtuvchi bilan suxbat</li>
                             </ul>
                             <button>Sotib olish</button>
-                    </div>
-                    <div className={price.price_block}>
+                    </animated.div>
+                    <animated.div style={center} className={price.price_block}>
                             <div className={price.price_photo}>
                                 <img src={Standart} alt="" />
                             </div>
@@ -61,8 +87,8 @@ export default function Price() {
                                     O'qtuvchi bilan suxbat</li>
                             </ul>
                             <button>Sotib olish</button>
-                    </div>
-                    <div className={price.price_block}>
+                    </animated.div>
+                    <animated.div style={right} className={price.price_block}>
                             <div className={price.price_photo}>
                                 <img src={Premium} alt="" />
                             </div>
@@ -86,7 +112,7 @@ export default function Price() {
                                     O'qtuvchi bilan suxbat</li>
                             </ul>
                             <button>Sotib olish</button>
-                    </div>
+                    </animated.div>
 
                 </div>
                 

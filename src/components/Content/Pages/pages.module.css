@@ -11,9 +11,12 @@
     flex-wrap: wrap;
 
 }
+.start h1{
+    padding: 10px 0;
+}
 
 .cards{
-   max-width: 100%;
+     max-width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;

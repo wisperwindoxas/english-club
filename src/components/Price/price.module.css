@@ -9,17 +9,17 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
 }
 .price_container{
     width: 100%;
     height: 600px;
     padding: 20px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr );
+    grid-gap: 10px;
+   
+   
 }
 
 .price_block{
@@ -35,6 +35,7 @@
     margin: 50px auto;
     cursor: pointer;
     transition: 0.3s ease;
+    overflow: hidden;
     
 }
 .price_block:hover{
@@ -97,12 +98,14 @@
     height: 200px;
     position: fixed;
     bottom: 0px;
+    left: 0;
     z-index: 100;
     background:url(./icons/sweet.png) repeat-x;
     background-size: contain;
 }
 
 .price_block:nth-of-type(2){
+    transform: translateY(-80px);
     height: 580px;
     background:linear-gradient(to bottom, rgb(233, 7, 253), rgb(255, 251, 6));
 }
@@ -114,4 +117,16 @@
 }
 .price_block:nth-of-type(3) .price_photo{
     background:linear-gradient(to right, rgb(7, 64, 253), rgb(6, 255, 89));
+}
+
+
+
+@media (max-width:996px){
+    .price_container{
+        grid-template-columns: repeat(1, 1fr );
+    }
+
+    .wrapper{
+        overflow: visible;
+    }
 }
